@@ -5,7 +5,6 @@ library(pheatmap)
 ##Google maps plot
 library(ggmap)
 register_google(key="###")
-#remotes::install_github("dyerlab/popgraph")##NEEDS too many requirements, need new laptop?
 library('tidygraph')
 library(ggplot2)
 library('igraph')
