@@ -11,6 +11,7 @@ This github repo describes workflow and codes used in Honduras microbiome study:
 - Microbiome-phenotype association 
 - Microbiome-pathway association 
 - Calculation of microbiome variance explained by phenotypes and pathways
+- Strain phenotype analysis
 - Plotting scripts
 
 ### Species abundance profiles
