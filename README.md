@@ -35,6 +35,11 @@ We evaluated associations between metabolic pathways and phenotypes using linear
 
 The microbiome composition variance explained by phenotypes was calculated by permutational multivariate analysis of variance using distance matrices, implemented in the adonis function for R package vegan (v.2.6), using 1000 permutations and a Bray-Curtis distance matrix calculated using relative abundances of microbial species. Variance explained was also performed using relative abundances of MetaCyc microbial biochemical pathways separately.
 
+### Strain phenotype analysis
+
+For strain-level analysis, we used the ANPAN package. Using the leaf distance in the phylogenetic tree, a linear mixed model – namely Phylogenetic Generalized Linear Mixed Model (ANPAN package v 0.2.0) – was implemented to get associations between phenotypes and strains:
+Phenotype ~ Age + Sex + BMI + Batch effect + Bristol stool scale + DNA concentration+ Sampling date + Species(abundance) + 1|village + 1|leaf + ɛ
+
 ### Plotting scripts
 
 Consisting of plotting scripts for all figures
