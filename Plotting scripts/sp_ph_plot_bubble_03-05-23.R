@@ -1,33 +1,3 @@
-ggplot(phen_all_use, aes(x=distance_center, y=bray_vil_mean)) + geom_point(aes(color=as.character(village_code)),size=1)+xlim(0,2)+xlab("Distance from weighted village center(km)")+ylab("Bray-Curtis dissimilarity")+ scale_color_brewer(palette="Paired")+theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),panel.background = element_blank(),text = element_text(size = 20),legend.position="none",axis.text.y = element_text(color="black"),axis.text.x = element_text(color="black"),axis.line.x = element_line(color="black", size = 0.5),axis.line.y = element_line(color="black", size = 0.5))+# +scale_x_continuous(trans='log2') +#legend.key = element_rect(colour = "white", fill = NA)
-  geom_smooth(method='lm',formula=y~x,color="black")+guides(fill=guide_legend(title="Village code"))+ labs(fill = "Village code")
-
-pheatmap(effect_size_phen_sig_plot2,annotation_row = NULL,annotation_names_row = T,labels_row = rownames(effect_size_phen_sig_plot),legend = T,fontsize_number = 15,border_color = "#EEEEEE",na_col = "white",fontsize_col = 10,angle_col = 90,fontsize_row = 10,fontface="bold",color=myColor,breaks=myBreaks,display_numbers = t(disp_fdr2),number_color = "black",treeheight_col = 0,treeheight_row = 0,cluster_rows = F,cluster_cols = T)
-
-
-d <- data.frame(
-  x = rep(paste("Team", LETTERS[1:8]), 4),
-  y = rep(paste("Task", 1:4), each = 8),
-  value = runif(32)
-)
-
-ggplot(d, aes(x, forcats::fct_rev(y), fill = value, size = value)) +
-  geom_point(shape = 21, stroke = 0) +
-  geom_hline(yintercept = seq(.5, 4.5, 1), size = .2) +
-  scale_x_discrete(position = "top") +
-  scale_radius(range = c(1, 15)) +
-  scale_fill_gradient(low = "orange", high = "blue", breaks = c(0, .5, 1), labels = c("Great", "OK", "Bad"), limits = c(0, 1)) +
-  theme_minimal() +
-  theme(legend.position = "bottom", 
-        panel.grid.major = element_blank(),
-        legend.text = element_text(size = 8),
-        legend.title = element_text(size = 8)) +
-  guides(size = guide_legend(override.aes = list(fill = NA, color = "black", stroke = .25), 
-                             label.position = "bottom",
-                             title.position = "right", 
-                             order = 1),
-         fill = guide_colorbar(ticks.colour = NA, title.position = "top", order = 2)) +
-  labs(size = "Area = Time Spent", fill = "Score:", x = NULL, y = NULL)
-
 ##########################################
 #Run this after running Normal health plotting in dmp_lmer_plotting_all
 
