@@ -47,5 +47,5 @@ Phenotype ~ Age + Sex + BMI + Batch effect + Bristol stool scale + DNA concentra
 
 ### Plotting scripts
 
-Phenotype-health, food&animal, and socio-economic, and supplmentary figure folders contain reproducible code capable of generating the figures in the paper.
+Phenotype-health, food&animal, and socio-economic, and supplmentary figure folders each contain an R script, which is capable of reproducing the figures in the paper.
 
