@@ -11,9 +11,9 @@ Despite a growing interest in the gut microbiome of non-industrialized regions o
 
 ### Contents:
 
-- Phenotype-health assocaitons
-- Phenotype-food&animal assocaitons 
-- Phenotype-socioeconomic assocaitons
+- Phenotype-health associations
+- Phenotype-food&animal associations 
+- Phenotype-socioeconomic associations
 - Supplementary figures
 - Supplementary data
 
