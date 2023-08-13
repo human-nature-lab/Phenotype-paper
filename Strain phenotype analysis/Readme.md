@@ -1,2 +1,0 @@
-# Strain phenotype analysis
-For strain-level analysis, we used the ANPAN package. Using the leaf distance in the phylogenetic tree, a linear mixed model – namely Phylogenetic Generalized Linear Mixed Model (ANPAN package v 0.2.0) – was implemented to get associations between phenotypes and strains: Phenotype ~ Age + Sex + BMI + Batch effect + Bristol stool scale + DNA concentration+ Sampling date + Species(abundance) + 1|village + 1|leaf + ɛ
