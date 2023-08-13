@@ -5,14 +5,17 @@ By: Christakis Group (Yale), and Brito Group (Cornell), United States of America
 
 This github repo describes workflow and codes used in Honduras microbiome study:
 
+### Abstract:
+
+Despite a growing interest in the gut microbiome of non-industrialized regions of the world, data linking microbiome features from such settings to diverse phenotypes remains uncommon. Using metagenomic data from a community-based cohort of 1,871 people from isolated villages in the Mesoamerican highlands of Western Honduras, we report 11,265 associations spanning 855 gut microbial species and 123 phenotypes. We report 593 associations with mental health phenotypes alone, as well as 4,276 associations with diverse socioeconomic phenotypes. Distinctly, we found 988 associations with microbiome metabolic pathways. We also report 10,653 associations after including strain-level phylogenies from 767 microbial species. Including such strain-phylogenetic information changes the overall relationship between the gut microbiome and these phenotypes, and strain-level phylogenetic information enhances the observed relationship between the microbiome and phenotypes as a whole. Our findings suggest new roles that gut microbiome surveillance can play in understanding broad features of individual and public health
+
 ### Contents:
 
-- Species and pathway abundance profiles
-- Microbiome-phenotype association 
-- Microbiome-pathway association 
-- Calculation of microbiome variance explained by phenotypes and pathways
-- Strain phenotype analysis
-- Plotting scripts
+- Phenotype-health assocaitons
+- Phenotype-food&animal assocaitons 
+- Phenotype-socioeconomic assocaitons
+- Supplementary figures
+- Supplementary data
 
 ### Species abundance profiles
 
