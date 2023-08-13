@@ -1,8 +1,7 @@
 
 # ==================================
 # By: Shivkumar Vishnempet Shridhar, Christakis and Brito group, HNL, Yale (2023)
-# Honduras microbiome project, plotting for
-# food&animal-phenotype association
+# Honduras microbiome project, script for google maps
 # ==================================
 
 
