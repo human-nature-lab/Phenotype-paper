@@ -16,6 +16,7 @@ Despite a growing interest in the gut microbiome of non-industrialized regions o
 - Phenotype-socioeconomic associations
 - Supplementary figures
 - Supplementary data
+- Miscellaneous
 
 ### Species abundance profiles
 
@@ -46,5 +47,5 @@ Phenotype ~ Age + Sex + BMI + Batch effect + Bristol stool scale + DNA concentra
 
 ### Plotting scripts
 
-Consisting of plotting scripts for all figures
+Phenotype-health, food&animal, and socio-economic, and supplmentary figure folders contain reproducible code capable of generating the figures in the paper.
 
