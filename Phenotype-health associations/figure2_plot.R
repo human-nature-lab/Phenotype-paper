@@ -1,5 +1,5 @@
 # ==================================
-# By: Shivkumar Vishnempet Shridhar, Christakis and Brito group, HNL, Yale (2023)
+# By: Shivkumar Vishnempet Shridhar, Christakis and Brito group, Yale (2023)
 # Honduras microbiome project, plotting for
 # health-phenotype association
 # ==================================
