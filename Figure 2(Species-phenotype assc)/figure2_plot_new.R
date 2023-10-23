@@ -266,9 +266,9 @@ for(i in 1:dim(mb_samp_sp)[1]){
   }
 }
 
-#Reading in
-#effect_size_phen_lmer<-read.csv('esz_vil_all.csv',row.names=1)
-#pval_phen_lmer<-read.csv('pval_vil_all.csv',row.names=1)
+#Reading in --- if unable to run above associations
+effect_size_phen_lmer<-read.csv('esz_vil_all.csv',row.names=1)
+pval_phen_lmer<-read.csv('pval_vil_all.csv',row.names=1)
 
 for(j in 1:dim(pval_phen_lmer)[2]){
   if(j==1){
