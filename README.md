@@ -7,13 +7,13 @@ This github repo describes workflow and codes used in Honduras microbiome study:
 
 ### Abstract:
 
-Despite a growing interest in the gut microbiome of non-industrialized regions of the world, data linking microbiome features from such settings to diverse phenotypes remains uncommon. Using metagenomic data from a community-based cohort of 1,871 people from isolated villages in the Mesoamerican highlands of Western Honduras, we report 11,265 associations spanning 855 gut microbial species and 123 phenotypes. We report 593 associations with mental health phenotypes alone, as well as 4,276 associations with diverse socioeconomic phenotypes. Distinctly, we found 988 associations with microbiome metabolic pathways. We also report 10,653 associations after including strain-level phylogenies from 767 microbial species. Including such strain-phylogenetic information changes the overall relationship between the gut microbiome and these phenotypes, and strain-level phylogenetic information enhances the observed relationship between the microbiome and phenotypes as a whole. Our findings suggest new roles that gut microbiome surveillance can play in understanding broad features of individual and public health
+Despite a growing interest in the gut microbiome of non-industrialized regions of the world, data linking microbiome features from such settings to diverse phenotypes remains uncommon. Using metagenomic data from a community-based cohort of 1,871 people from isolated villages in the Mesoamerican highlands of Western Honduras, we report 2,148 associations spanning 855 gut microbial species and 123 phenotypes. We report 66 associations with mental health phenotypes alone, as well as 4,276 associations with diverse socioeconomic phenotypes. Distinctly, we found 988 associations with microbiome metabolic pathways.  Including such strain-phylogenetic information changes the overall relationship between the gut microbiome and these phenotypes, and strain-level phylogenetic information enhances the observed relationship between the microbiome and phenotypes as a whole. Our findings suggest new roles that gut microbiome surveillance can play in understanding broad features of individual and public health
 
 ### Contents:
 
-- Phenotype-health associations
-- Phenotype-food&animal associations 
-- Phenotype-socioeconomic associations
+- Phenotype-microbiome associations
+- Phenotyp-microbiome with strains
+- Polymorphic sites
 - Supplementary figures
 - Supplementary data
 - Miscellaneous
@@ -42,8 +42,19 @@ The microbiome composition variance explained by phenotypes was calculated by pe
 
 ### Strain phenotype analysis
 
-For strain-level analysis, we used the ANPAN package. Using the leaf distance in the phylogenetic tree, a linear mixed model – namely Phylogenetic Generalized Linear Mixed Model (ANPAN package v 0.2.0) – was implemented to get associations between phenotypes and strains:
-Phenotype ~ Age + Sex + BMI + Batch effect + Bristol stool scale + DNA concentration+ Sampling date + Species(abundance) + 1|village + 1|leaf + ɛ
+For strain-level analysis, we used the Almer function in “evolvability” package (v 2.0.0). Almer incorporates phylogenetic trees of species as correlated random effects structure. This aspect is written in as the A argument, which can be taken in from the generated sparse matrix of the phylogenetic tree from ape package.
+
+Species abundance ~ age+sex+BMI+batch effect+bristol stool scale+ DNA concentration+Sampling date+phenotype+1|village+1|phyl, A=list(phyl=A1)
+
+Here, “phyl” is the sample names present in the phylogenetic tree. A1 is the sparse matrix generated from phylogenetic tree. In order to evaluate the strain-phylogenetic effect, results from lmer model (previous section) and the results from Almer model were compared and contrasted. 
+Overall, among the 78,597 species-phenotype pairs (639 species and 123 phenotypes), 52,864 pairs were chosen after filtering for phylogenetic signal. Phylogenetic signal was estimated using “phylosig” function in “phytools” package (v 1.9-23) using ‘lambda’ method. The phylogenetic signal was estimated for the phylogenetic tree of each species vs phenotype of interest. 
+
+### Polymorphic sites
+
+For polymorphic sites, files suffixed with “.polymorphic” in StrainPhlAn4 output were used after discarding 0’s in the “percentage of polymorphic sites” column. Following this, linear regression was used to investigate the relationship between polymorphic site percentage and individual host phenotypes.
+
+% of polymorphic sites ~ Phenotype
+
 
 ### Plotting scripts
 
