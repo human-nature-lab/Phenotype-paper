@@ -3,7 +3,7 @@
 # ==================================
 # By: Shivkumar Vishnempet Shridhar, Francesco Beghini, Christakis and Brito group, Yale (2023)
 # Honduras microbiome project, plotting for
-# Figure 3
+# Figure 2
 # ==================================
 
 library(lmerTest)
