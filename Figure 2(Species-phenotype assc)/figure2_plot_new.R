@@ -5,7 +5,7 @@ require(doParallel)
 library(ggplot2)
 library(dplyr)
 
-st<-read.csv('st_123.csv',row.names = 1)
+st<-read.csv('st_123.csv',row.names = 1)#Bristol stool scale
 st<-as.matrix.data.frame(st)
 phen_all_use<-read.csv('phen_b4.csv',header=T)#Contains all other variables -- on each person
 colnames(phen_all_use)[1]<-"sample_ID"
