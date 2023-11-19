@@ -1,3 +1,12 @@
+
+# ==================================
+# By: Shivkumar Vishnempet Shridhar,  Christakis and Brito group, Yale (2023)
+# Honduras microbiome project, plotting for
+# Figure 4
+# ==================================
+
+
+
 #######################################################
 ###Plotting
 
