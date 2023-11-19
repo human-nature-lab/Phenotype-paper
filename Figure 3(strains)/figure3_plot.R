@@ -245,10 +245,14 @@ output <- foreach(kl=2:dim(phen_all_raw)[2], .combine=rbind) %dopar% {
 }
 
 
+output<-cbind(output,p.adjust(output[,2],method='BH'))
+output<-cbind(output,p.adjust(output[,4],method='BH'))
+
+
 ###Plotting figure 3b
 
 
-e12<-as.data.frame(output[which((output[,2]<0.05)&output[,5]>0),])#Taking only the significant values in normal-species-phenotype model
+e12<-as.data.frame(output[which((output[,6]<0.05)&output[,5]>0),])#Taking only the significant values in normal-species-phenotype model
 colnames(e12)<-c("x1","x1p","y1","y1p")
 
 op<-cor.test(e12$x1,e12$y1,method="spearman")
