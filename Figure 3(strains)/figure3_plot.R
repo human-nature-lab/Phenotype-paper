@@ -148,7 +148,7 @@ registerDoParallel(cl)
 effect_size_phen<-array(NA,dim=c(dim(data_transformed)[1],(dim(phen_all_raw)[2]-1)))
 pval_phen<-array(NA,dim=c(dim(data_transformed)[1],(dim(phen_all_raw)[2]-1)))
 
-#change to directory contraining tree files
+
 
 output <- foreach(kl=2:dim(phen_all_raw)[2], .combine=rbind) %dopar% {
   
@@ -159,6 +159,7 @@ output <- foreach(kl=2:dim(phen_all_raw)[2], .combine=rbind) %dopar% {
   pval_phen<-array(NA,dim=length(ind_sp2))
   effect_size_phen_no<-array(NA,length(ind_sp2))
   pval_phen_no<-array(NA,dim=length(ind_sp2))
+  phyl2<-array(NA,dim=length(ind_sp2))
   
   
   for(i in 1:length(ind_sp2)){
@@ -196,7 +197,7 @@ output <- foreach(kl=2:dim(phen_all_raw)[2], .combine=rbind) %dopar% {
         pval_phen_no[i]<-coef(mss)[which(rownames(coef(mss))=="phen"),5]
         effect_size_phen[i]<-coef(summary(ms3))[which(rownames(coef(ms3))=="phen"),1]
         pval_phen[i]<-2*pnorm(abs(coef(ms3)[which(rownames(coef(ms3))=="phen"),3]), lower.tail = FALSE)#Pvalue of phenotype
-        
+        phyl2[i]<-phylosig(tr3,cleaned_data2$phen, method="lambda", test=FALSE)#Checking for phylogenetic signal
         
       }else{
         effect_size_phen_no[i]<-0
@@ -230,7 +231,7 @@ output <- foreach(kl=2:dim(phen_all_raw)[2], .combine=rbind) %dopar% {
       pval_phen_no[i]<-coef(mss)[which(rownames(coef(mss))=="phen"),5]
       effect_size_phen[i]<-coef(summary(ms3))[which(rownames(coef(ms3))=="phen"),1]
       pval_phen[i]<-2*pnorm(abs(coef(ms3)[which(rownames(coef(ms3))=="phen"),3]), lower.tail = FALSE)#Pvalue of phenotype
-      
+      phyl2[i]<-phylosig(tr3,cleaned_data2$phen, method="lambda", test=FALSE)#Checking for phylogenetic signal
       
     }
     
@@ -239,7 +240,7 @@ output <- foreach(kl=2:dim(phen_all_raw)[2], .combine=rbind) %dopar% {
   }
   }
   
-  print(cbind(effect_size_phen_no,pval_phen_no,effect_size_phen,pval_phen))
+  print(cbind(effect_size_phen_no,pval_phen_no,effect_size_phen,pval_phen,phyl2))
   
 }
 
@@ -247,45 +248,22 @@ output <- foreach(kl=2:dim(phen_all_raw)[2], .combine=rbind) %dopar% {
 ###Plotting figure 3b
 
 
-e12<-as.data.frame(output[which(output[,2]<0.05),])#Taking only the significant values in normal-species-phenotype model
+e12<-as.data.frame(output[which((output[,2]<0.05)&output[,5]>0),])#Taking only the significant values in normal-species-phenotype model
 colnames(e12)<-c("x1","x1p","y1","y1p")
 
-e13<-cbind(cbind(e12,"shp"=array(21,dim=c(dim(e12)[1],1))),"coll2"=array("black",dim=c(dim(e12)[1],1)))
-
-op<-cor.test(e13$x1,e13$y1,method="spearman")
+op<-cor.test(e12$x1,e12$y1,method="spearman")
 rho<-op$estimate
 pval<-op$p.value
-op2<-lm(e13$y1~e13$x1)
+op2<-lm(e12$y1~e12$x1)
 coef(op2)
-e14<-e13[c(dim(e13)[1]:-1:1),]
+e14<-e12[c(dim(e12)[1]:-1:1),]
 
 
-pdf('figure_3b.pdf',width=6,height=5)
+pdf('figure_3b.pdf',width=6,height=5)#was width=13,heigh=6(or 4)
 ggplot(e14,aes(x=x1,y=y1))+geom_point(alpha=0.5,color="#4575b4",size=3)+geom_abline(intercept=0,slope=1,linetype="dashed", size=1.3)+xlim(-10,10)+ylim(-10,10)+
-  #geom_abline(intercept=coef(op2)[1],slope=0.95,col="red", size=1)
-  geom_segment(x=10,y=10*coef(op2)[2]+coef(op2)[1],xend=-10,yend=-10*coef(op2)[2]+coef(op2)[1],col="red", size=1)+#was 0.93
-  #geom_hline(yintercept=0,linetype="dashed", size=1.3)+#+xlim(-1,1)+ylim(-1,1)+
+  geom_segment(x=10,y=10*coef(op2)[2]+coef(op2)[1],xend=-10,yend=-10*coef(op2)[2]+coef(op2)[1],col="red", size=1)+
   theme(legend.position = "none",panel.background = element_blank(),panel.grid.major.x = element_blank(),panel.grid.minor.x = element_blank(),axis.title.x=element_text(size=20),axis.title.y=element_text(size=20),axis.text.x=element_text(size=15,color="black"),axis.text.y=element_text(size=15,color="black"),axis.line.y = element_line(color="black"),axis.line.x = element_line(color="black"))+
   xlab("Without strain-phylogenetic effect")+ylab("With strain-phylogenetic effect")+
   theme(plot.margin=margin(c(1,0,0,0), unit = "cm"))
 dev.off()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
