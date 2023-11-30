@@ -56,7 +56,5 @@ For polymorphic sites, files suffixed with “.polymorphic” in StrainPhlAn4 ou
 % of polymorphic sites ~ Phenotype
 
 
-### Plotting scripts
 
-Phenotype-health, food&animal, and socio-economic, and supplmentary figure folders each contain an R script, which is capable of reproducing the figures in the paper.
 
