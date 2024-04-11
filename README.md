@@ -40,6 +40,12 @@ We evaluated associations between metabolic pathways and phenotypes using linear
 
 The microbiome composition variance explained by phenotypes was calculated by permutational multivariate analysis of variance using distance matrices, implemented in the adonis function for R package vegan (v.2.6), using 1000 permutations and a Bray-Curtis distance matrix calculated using relative abundances of microbial species. Variance explained was also performed using relative abundances of MetaCyc microbial biochemical pathways separately.
 
+### Meta-analysis of BMI (Body Mass Index)
+
+We screened publicly available datasets using the curatedMetagenomicData package (v3.6.2) to look for cohorts from similar populations and sharing the most number of available metadata. We identified a total of 5 non-western studies having in common BMI (Asnicar F et.al (2021), HMP (2012), HMP (2019), Qin N et.al (2014)) along with 4 western cohorts (Kaur K et.al (2020), Lokmer A et.al (2019), Obregon-Tito AJ (2015), Pasolli E et.al (2019), Rubel MA et.al (2020)) amounting to 5,001 samples. Data was downloaded from NCBI SRA using the accessions available through curatedMetagenomicData and processed using the same pipeline described beforehand. 
+We then performed a meta-analysis on BMI values using species-level relative abundances using. Age, gender, and lifestyle category were used as controls. We discretized age by binning the value into three levels: child-adolescent (< 18), adult (18-60), and senior (> 60).
+A random effect meta-analysis was performed using species-level relative abundances normalized with CLR using the meta package (v 4.9-9). After using linear model to obtain correlation coefficients, the metacor function (from meta package) was used to Random effects using Paule-Mandel estimator method. P-values obtained were adjusted using FDR (Benjamini-Hochberg corrected). In total, 21 species were found significant after corrections. 
+
 ### Strain phenotype analysis
 
 For strain-level analysis, we used the Almer function in “evolvability” package (v 2.0.0). Almer incorporates phylogenetic trees of species as correlated random effects structure. This aspect is written in as the A argument, which can be taken in from the generated sparse matrix of the phylogenetic tree from ape package.
