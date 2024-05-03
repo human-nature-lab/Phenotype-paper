@@ -7,12 +7,13 @@ This github repo describes workflow and codes used in Honduras microbiome study:
 
 ### Abstract:
 
-Despite a growing interest in the gut microbiome of non-industrialized regions of the world, data linking microbiome features from such settings to diverse phenotypes remains uncommon. Using metagenomic data from a community-based cohort of 1,871 people from isolated villages in the Mesoamerican highlands of Western Honduras, we report 2,148 associations spanning 639 gut microbial species and 123 phenotypes. We report 64 associations with mental health phenotypes alone, as well as 1,105 associations with diverse socioeconomic phenotypes. Distinctly, we found 988 associations with microbiome metabolic pathways. Furthermore, including such strain-phylogenetic information modifies the overall relationship between the gut microbiome and these phenotypes, especially in some phenotypes like household wealth. Coincidentally, the number of polymorphic sites within some species were also increased in wealthier individuals. Our analysis suggests new roles that gut microbiome surveillance can play in understanding broad features of individual and public health. 
+Despite a growing interest in the gut microbiome of non-industrialized countries, data linking deeply sequenced microbiome from such settings to diverse host phenotypes and situational factors remains uncommon. Using metagenomic data from a community-based cohort of 1,871 people from isolated villages in the Mesoamerican highlands of western Honduras, we report novel associations between bacterial species and human phenotypes and factors. Among them, socioeconomic factors account for 51.44 % of the total associations. Meta-analysis of species-level profiles across several datasets identified several species associated with Body Mass Index, consistent with previous findings. Furthermore, the inclusion of strain-phylogenetic information modifies the overall relationship between the gut microbiome and the phenotypes, especially for some factors like household wealth (e.g., wealthier individuals harbor different strains of Eubacterium rectale). Our analysis suggests new roles that gut microbiome surveillance can play in understanding broad features of individual and public health. 
 
 ### Contents:
 
 - Phenotype-microbiome associations
-- Phenotyp-microbiome with strains
+- Phenotype-Pathway associations
+- Meta-analysis of BMI
 - Polymorphic sites
 - Supplementary figures
 - Supplementary data
@@ -43,7 +44,7 @@ The microbiome composition variance explained by phenotypes was calculated by pe
 ### Meta-analysis of BMI (Body Mass Index)
 
 We screened publicly available datasets using the curatedMetagenomicData package (v3.6.2) to look for cohorts from similar populations and sharing the most number of available metadata. We identified a total of 5 non-western studies having in common BMI (Asnicar F et.al (2021), HMP (2012), HMP (2019), Qin N et.al (2014)) along with 4 western cohorts (Kaur K et.al (2020), Lokmer A et.al (2019), Obregon-Tito AJ (2015), Pasolli E et.al (2019), Rubel MA et.al (2020)) amounting to 5,001 samples. Data was downloaded from NCBI SRA using the accessions available through curatedMetagenomicData and processed using the same pipeline described beforehand. 
-We then performed a meta-analysis on BMI values using species-level relative abundances using. Age, gender, and lifestyle category were used as controls. We discretized age by binning the value into three levels: child-adolescent (< 18), adult (18-60), and senior (> 60).
+We then performed a meta-analysis on BMI values using species-level relative abundances using. Age, gender, and lifestyle category (non-western or not) were used as controls. We discretized age by binning the value into three levels: child-adolescent (< 18), adult (18-60), and senior (> 60).
 A random effect meta-analysis was performed using species-level relative abundances normalized with CLR using the meta package (v 4.9-9). After using linear model to obtain correlation coefficients, the metacor function (from meta package) was used to Random effects using Paule-Mandel estimator method. P-values obtained were adjusted using FDR (Benjamini-Hochberg corrected). In total, 21 species were found significant after corrections. 
 
 ### Strain phenotype analysis
