@@ -1,5 +1,5 @@
 Authors: Shivkumar Vishnempet Shridhar†, Francesco Beghini†, Marcus Alexander, Adarsh Singh, Rigoberto Matute Juárez, Ilana L. Brito*, and Nicholas A. Christakis*
-By: Christakis Group (Yale), and Brito Group (Cornell), United States of America
+By: Human Nature Lab (Yale), and Brito Group (Cornell), United States of America
 
 ## Honduras Microbiome phenotype project
 
